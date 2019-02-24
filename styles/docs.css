@@ -1,0 +1,133 @@
+@charset "UTF-8";
+.text-emphasize {
+  font-size: 1.1em;
+  color: #fe6856; }
+
+.code {
+  font-family: Consolas;
+  color: #fe6856; }
+
+#s-title {
+  transition: 0.2s;
+  margin-bottom: 0.5rem; }
+
+.sticky-top {
+  position: sticky;
+  top: 0; }
+
+.example {
+  margin: 0.9rem 0 0.3rem;
+  display: block; }
+  .example::after {
+    content: "Example ↓";
+    display: inline-block;
+    border-radius: 0.2rem;
+    padding: 0.2rem 0.4rem;
+    background-color: #018798;
+    color: #fefefe; }
+
+.p-1 {
+  padding: 0.1rem 0.2rem; }
+
+.p-4 {
+  padding: 0.4rem 1rem; }
+
+.p-2-c {
+  text-align: center;
+  padding: 0.2rem 0.4rem; }
+
+@media (max-width: 480px) {
+  .row {
+    padding: 0; }
+    .row .column {
+      padding: 0 0 1rem 0; } }
+pre {
+  max-height: 29rem !important; }
+
+.fake-card {
+  height: 100%;
+  box-shadow: 0 0.2rem 0.3rem rgba(16, 27, 39, 0.4);
+  border-radius: 0.2rem; }
+  .fake-card img {
+    display: block; }
+  .fake-card .fake-card-header {
+    padding: 0.6rem;
+    text-align: center; }
+  .fake-card .fake-card-footer {
+    padding: 0.6rem; }
+  .fake-card .fake-card-body {
+    padding: 0.6rem 0.6rem 0; }
+  .fake-card .fake-card-img {
+    width: 100%; }
+    .fake-card .fake-card-img:first-child {
+      border-top-left-radius: 0.2rem;
+      border-top-right-radius: 0.2rem; }
+    .fake-card .fake-card-img:last-child {
+      border-bottom-right-radius: 0.2rem;
+      border-bottom-left-radius: 0.2rem; }
+
+#footer {
+  max-width: 800px;
+  margin-top: 2rem;
+  padding-top: 0.3rem;
+  border-top: #fe6856 solid 2px;
+  color: #fe6856; }
+
+.docs-container {
+  height: 100vh; }
+
+.off-canvas .off-canvas-sidebar {
+  padding-right: 0;
+  width: 12rem; }
+.off-canvas .accordion-header {
+  font-weight: 600;
+  text-transform: uppercase; }
+.off-canvas .off-canvas-toggle {
+  position: fixed;
+  left: 1rem; }
+.off-canvas .off-canvas-content {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  padding-top: 2.5rem;
+  padding-left: 3rem; }
+  @media (max-width: 960px) {
+    .off-canvas .off-canvas-content {
+      padding-left: 1rem;
+      padding-right: 1rem; } }
+
+.siderbar-brand {
+  position: fixed;
+  background-color: #383d4e;
+  z-index: 30;
+  width: 12rem;
+  left: 0;
+  top: 0;
+  height: 4rem;
+  padding-left: 1.4rem; }
+  .siderbar-brand a {
+    font-size: 2rem;
+    line-height: 4rem;
+    color: #e3d1d7;
+    text-decoration: none; }
+
+.siderbar-menu {
+  position: fixed;
+  width: 12rem;
+  top: 4rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  bottom: 0;
+  background-color: #f7faf7;
+  overflow-y: auto; }
+  .siderbar-menu .menu {
+    width: 100%; }
+
+.content-container {
+  max-width: 800px;
+  flex: 1; }
+
+.show {
+  margin: 2rem; }
+
+/*# sourceMappingURL=docs.css.map */

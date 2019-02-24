@@ -1,0 +1,34 @@
+/*与边角形状有关*/
+.round{
+  border-radius: $border-radius;
+}
+.round-lg{
+  border-radius: 2 * $border-radius;
+}
+.round-top{
+  @include border-radius-top($border-radius);
+}
+.round-lg-top{
+  @include border-radius-top(2 * $border-radius);
+}
+.round-right{
+  @include border-radius-right($border-radius);
+}
+.round-lg-right{
+  @include border-radius-right(2 * $border-radius);
+}
+.round-bottom{
+  @include border-radius-bottom($border-radius);
+}
+.round-lg-bottom{
+  @include border-radius-bottom(2 * $border-radius);
+}
+.round-left{
+  @include border-radius-left($border-radius);
+}
+.round-lg-left{
+  @include border-radius-left(2 * $border-radius);
+}
+.circle{
+  border-radius: 50%;
+}

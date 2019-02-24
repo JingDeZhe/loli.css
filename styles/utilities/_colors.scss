@@ -1,0 +1,29 @@
+/*设定常用的背景色与前景色*/
+@each $key, $value in $colors {
+  .bg-#{$key}{
+    background-color: $value !important;
+  }
+  .text-#{$key}{
+    color: $value !important;
+  }
+}
+@each $key, $value in $theme-colors {
+  .bg-#{$key}{
+    background-color: $value !important;
+  }
+  .text-#{$key}{
+    color: $value !important;
+  }
+}
+// 基本颜色主题
+@each $key, $value in $colors {
+  .color-theme-#{$key}{
+    background-color: $value !important;
+    color: color-contrast($value) !important;
+  }
+}
+
+// 阴影
+.shadow{
+  box-shadow: 0 0.1rem 0.2rem rgba($dark,0.3);
+}

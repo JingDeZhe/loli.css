@@ -1,0 +1,18 @@
+.label{
+  border-radius: $border-radius;
+  line-height: 1.25;
+  padding: $unit-h $unit-2;
+  display: inline-block;
+  cursor: pointer;
+  &.label-rounded{
+    border-radius: 9rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@each $key, $value in $theme-colors{
+  .label-#{$key}{
+    background-color: $value;
+    color: color-contrast($value);
+  }
+}

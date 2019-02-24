@@ -1,0 +1,91 @@
+// 抽屉侧边栏
+.off-canvas{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .off-canvas-toggle{
+    position: absolute;
+    top: $layout-spacing;
+    z-index: $zindex-0;
+    a{
+      text-decoration: none;
+      &:active{
+        outline: none;
+      }
+    }
+    @if $r2l {
+      right: $layout-spacing;
+    } @else {
+      left: $layout-spacing;
+    }
+  }
+  .off-canvas-sidebar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $zindex-2;
+    overflow-y: auto;
+    transition: transform 0.25s;
+    @if $r2l {
+      right: 0;
+      transform: translate(100%);
+    } @else {
+      left: 0;
+      transform: translate(-100%);
+    }
+  }
+  .off-canvas-content{
+    flex: auto;
+    min-width: 0;
+    height: 100%;
+    padding: $layout-spacing;
+  }
+  .off-canvas-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    display: none;
+  }
+  // 交互
+  .off-canvas-sidebar{
+    &:target,
+    &.active{
+      transform: translate(0);
+      ~ .off-canvas-overlay{
+        display: block;
+        z-index: $zindex-1;
+      }
+    }
+  }
+}
+// 大屏幕的时候可以设置不隐藏侧边栏
+@include forLargeScreen($off-canvas-breakpoint){
+  .off-canvas{
+    &.off-canvas-siderbar-show{
+      .off-canvas-toggle{
+        display: none;
+      }
+      .off-canvas-sidebar{
+        flex: 0 0 auto;
+        position: relative;
+        transform: none;
+        height: auto;
+        @if $r2l{
+          order: 1;
+        } @else {
+          order: -1;
+        }
+      }
+      .off-canvas-overlay{
+        display: none !important;
+      }
+    }
+  }
+}

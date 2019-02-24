@@ -1,0 +1,159 @@
+@import "./variables";
+@import "./mixins/mixins";
+
+
+// 通用
+$off-canvas-width: 12rem;
+.text-emphasize{
+  font-size: 1.1em;
+  color: $orange;
+}
+.code{
+  font-family: Consolas;
+  color: $orange;
+}
+#s-title{
+  transition: 0.2s;
+  margin-bottom: 0.5rem;
+}
+.sticky-top{
+  position: sticky;
+  top: 0;
+}
+.example{
+  margin: 0.9rem 0 0.3rem;
+  display: block;
+  &::after{
+    content: "Example ↓";
+    display: inline-block;
+    border-radius: $border-radius;
+    padding: 0.2rem 0.4rem;
+    background-color: $blue;
+    color: $white;
+  }
+}
+.p-1{
+  padding: 0.1rem 0.2rem;
+}
+.p-4{
+  padding: 0.4rem 1rem;
+}
+.p-2-c{
+  text-align: center;
+  padding: 0.2rem 0.4rem;
+}
+
+// 具体
+@include forSmallScreen($size-xs){
+  .row{
+    padding: 0;
+    .column{
+      padding: 0 0 1rem 0;
+    }
+  }
+}
+pre{
+  max-height: 29rem !important;
+}
+.fake-card{
+  height: 100%;
+  box-shadow: 0 0.2rem 0.3rem rgba($dark,0.4);
+  border-radius: 0.2rem;
+  img{
+    display: block;
+  }
+  .fake-card-header{
+    padding: $layout-spacing-lg;
+    text-align: center;
+  }
+  .fake-card-footer{
+    padding: 0.6rem;
+  }
+  .fake-card-body{
+    padding: 0.6rem 0.6rem 0;
+  }
+  .fake-card-img{
+    width: 100%;
+    &:first-child{
+      @include border-radius-top(0.2rem);
+    }
+    &:last-child{
+      @include border-radius-bottom(0.2rem);
+    }
+  }
+}
+// .column{
+//   display: flex;
+// }
+#footer{
+  max-width: 800px;
+  margin-top: 2rem;
+  padding-top: 0.3rem;
+  border-top: $orange solid 2px;
+  color: $orange;
+}
+.docs-container{
+  height: 100vh;
+}
+.off-canvas{
+  .off-canvas-sidebar{
+    padding-right: 0;
+    width: $off-canvas-width;
+  }
+  .accordion-header{
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .off-canvas-toggle{
+    position: fixed;
+    left: 1rem; 
+  }
+  .off-canvas-content{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    padding-top: 2.5rem;
+    padding-left: 3rem;
+    @include forSmallScreen($size-lg){
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}
+.siderbar-brand{
+  position: fixed;
+  background-color: #383d4e;
+  z-index: $zindex-3;
+  width: $off-canvas-width;
+  left: 0;
+  top: 0;
+  height: 4rem;
+  padding-left: 1.4rem;
+  a{
+    font-size: 2rem;
+    line-height: 4rem;
+    color: #e3d1d7;
+    text-decoration: none;
+  }
+}
+.siderbar-menu{
+  position: fixed;
+  width: $off-canvas-width;
+  top: 4rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  bottom: 0;
+  background-color: #f7faf7;
+  overflow-y: auto;
+  .menu{
+    width: 100%;
+  }
+}
+.content-container{
+  max-width: 800px;
+  flex: 1;
+}
+// 临时撑出一片空白
+.show{
+  margin: 2rem;
+}

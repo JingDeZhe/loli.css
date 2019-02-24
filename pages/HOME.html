@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Template</title>
+  <link rel="stylesheet" href="../styles/loli-1.1.2.css">
+  <link rel="stylesheet" href="../styles/docs.css">
+</head>
+<body>
+  <!-- 内容于此 -->
+  <div class="docs-container">
+    <div class="off-canvas off-canvas-siderbar-show">
+      <div class="off-canvas-toggle">
+        <a href="#sidebar" class="icon icon-menu"></a>
+      </div>
+      <div class="off-canvas-sidebar" id="sidebar">
+        <div class="siderbar-brand">
+          <a href="HOME.html">Loli<span class="text-red">.</span>css</a>
+        </div>
+        <div class="siderbar-menu">
+          <div class="accordion">
+            <input type="checkbox" id="menu-layout" checked hidden>
+            <label for="menu-layout" class="accordion-header">
+              Layout
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./grid.html">Grid</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-utilities" checked hidden>
+            <label for="menu-utilities" class="accordion-header">
+              Utilities
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./color.html">Color</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./text.html">Text</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./position.html">Position</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-component" checked hidden>
+            <label for="menu-component" class="accordion-header">
+              Component
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./accordion.html">Accordion</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./bars.html">Bars</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./card.html">Card</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./hideLine.html">hideLine</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./off-canvas.html">Off-canvas</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./tooltip.html">Tooltip</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#closeSiderbar" class="off-canvas-overlay"></a>
+      <div class="off-canvas-content">
+        <div class="content-container">
+          <h2>前言</h2>
+          <p>虽然前端的CSS框架非常非常之多，大些的如Bootstrap、jQuery UI之类，小些的如Spectre、Pure之属，都是很方便使用也不难入门的。但就学习的层面来说，全部使用现有的框架就很难了解基础的东西该怎样写出来。比如来说，现有的框架一般会提供一个很方便的网格系统，使用起来就不需要考虑太多屏幕尺寸适配的问题，但屏幕适配的概念和相应的方法其实是很值得学习的。总的来说，学习的时候可以尝试着去借鉴与研究现有的框架，最好是自己能亲自将它重写一遍，在重写的过程中，自身的能力便能得以提升。</p>
+          <p>既然打算借鉴现有的框架，那选择什么框架去借鉴也很重要。首先，非常出名的框架如Bootstrap当然是可以借鉴的，并且Bootstrap框架本身的代码风格是很好的。Boostrap V3版本采用的是预处理器是Less，V4版本则是SCSS，这便使得代码结构性非常强，研究起来比纯CSS要方便许多，能更好地抓住其重要的部分无需被繁杂的重复样式花了眼。然而说了Bootstrap的这么些优点，其实我是不推荐一开始就硬扛这么大一个框架的，里边工程特性有些强，虽然条理都很清晰，但条理太多了也会导致难以把握，所以还是得要退而求其次，找一个基于Less或SCSS的框架，光有CSS代码也不大好的。</p>
+          <p>然后非常偶然的情况，便发现了<a href="https://picturepan2.github.io/spectre/index.html" target="_blank" rel="noopener noreferrer">Spectre</a>框架，实在是很符合研究的目的性，内容挺全源码也足够清晰，于是乎，千言万语汇成一句话：</p>
+          <p class="text-emphasize">感谢Spectre，感谢<span class="tooltip" data-tooltip="Spectre的作者">Yan Zhu</span>。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

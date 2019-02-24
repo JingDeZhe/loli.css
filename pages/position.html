@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Position</title>
+  <link rel="stylesheet" href="../vendors/prism.css">
+  <link rel="stylesheet" href="../styles/loli-1.1.2.css">
+  <link rel="stylesheet" href="../styles/docs.css">
+</head>
+<body>
+  <!-- 内容于此 -->
+  <div class="docs-container">
+    <div class="off-canvas off-canvas-siderbar-show">
+      <div class="off-canvas-toggle">
+        <a href="#sidebar" class="icon icon-menu"></a>
+      </div>
+      <div class="off-canvas-sidebar" id="sidebar">
+        <div class="siderbar-brand">
+          <a href="HOME.html">Loli<span class="text-red">.</span>css</a>
+        </div>
+        <div class="siderbar-menu">
+          <div class="accordion">
+            <input type="checkbox" id="menu-layout" checked hidden>
+            <label for="menu-layout" class="accordion-header">
+              Layout
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./grid.html">Grid</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-utilities" checked hidden>
+            <label for="menu-utilities" class="accordion-header">
+              Utilities
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./color.html">Color</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./text.html">Text</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./position.html">Position</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-component" checked hidden>
+            <label for="menu-component" class="accordion-header">
+              Component
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./accordion.html">Accordion</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./bars.html">Bars</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./card.html">Card</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./hideLine.html">hideLine</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./off-canvas.html">Off-canvas</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./tooltip.html">Tooltip</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#closeSiderbar" class="off-canvas-overlay"></a>
+      <div class="off-canvas-content">
+        <div class="content-container">
+          <h2 id="s-title">Position</h2>
+          <p>Position没什么可说的地方，就只是包含了常见的诸如<span class="code">float, position, margin, padding, display, flex</span>之类的类，需要注意些的如下：</p>
+          <pre><code class="language-css">.p-sticky{
+  position: sticky;
+}
+.p-centered{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.flex-centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+          <p>另外为了方便设定各个方向的边距，将其设定为mixin就可以节省时间：</p>
+          <pre><code class="language-css">// 边距等
+@mixin margin-variant($id: 1, $size: $unit-1) {
+  .m-#{$id} {
+    margin: $size !important;
+  }
+  .mb-#{$id} {
+    margin-bottom: $size !important;
+  }
+  .ml-#{$id} {
+    margin-left: $size !important;
+  }
+  .mr-#{$id} {
+    margin-right: $size !important;
+  }
+  .mt-#{$id} {
+    margin-top: $size !important;
+  }
+  .mx-#{$id} {
+    margin-left: $size !important;
+    margin-right: $size !important;
+  }
+  .my-#{$id} {
+    margin-bottom: $size !important;
+    margin-top: $size !important;
+  }
+}</code></pre>
+          <p>以上是margin的类，padding类除了是以p开头其余的是一模一样的，不赘叙。</p>
+          <p class="example"></p>
+          <div class="color-theme-yellow p-2-c p-centered round-lg-top" style="width: max-content;">
+            <p class="text-huge">六祖<br>惠能</p>
+          </div>
+          <div class="color-theme-cyan p-2-c flex-around round-lg">
+            <p>菩提本无树，</p>
+            <p>明镜亦非台。</p>
+            <p>本来无一物，</p>
+            <p>何处惹尘埃。</p>
+          </div>
+        </div>
+        <footer id="footer">
+          <p>Jingzhe</p>
+          <p><a href="#">Github</a></p>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="../vendors/prism.js"></script>
+</body>
+</html>

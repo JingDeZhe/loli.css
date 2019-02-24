@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Template</title>
+  <link rel="stylesheet" href="../vendors/prism.css">
+  <link rel="stylesheet" href="../styles/loli-1.1.2.css">
+  <link rel="stylesheet" href="../styles/docs.css">
+</head>
+<body>
+  <!-- 内容于此 -->
+  <div class="docs-container">
+    <div class="off-canvas off-canvas-siderbar-show">
+      <div class="off-canvas-toggle">
+        <a href="#sidebar" class="icon icon-menu"></a>
+      </div>
+      <div class="off-canvas-sidebar" id="sidebar">
+        <div class="siderbar-brand">
+          <a href="HOME.html">Loli<span class="text-red">.</span>css</a>
+        </div>
+        <div class="siderbar-menu">
+          <div class="accordion">
+            <input type="checkbox" id="menu-layout" checked hidden>
+            <label for="menu-layout" class="accordion-header">
+              Layout
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./grid.html">Grid</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-utilities" checked hidden>
+            <label for="menu-utilities" class="accordion-header">
+              Utilities
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./color.html">Color</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./text.html">Text</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./position.html">Position</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-component" checked hidden>
+            <label for="menu-component" class="accordion-header">
+              Component
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./accordion.html">Accordion</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./bars.html">Bars</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./card.html">Card</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./hideLine.html">hideLine</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./off-canvas.html">Off-canvas</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./tooltip.html">Tooltip</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#closeSiderbar" class="off-canvas-overlay"></a>
+      <div class="off-canvas-content">
+        <div class="content-container">
+          <h2 id="s-title">Off-canvas</h2>
+          <p>Off-canvas即抽屉式的侧边导航栏布局，导航栏在大尺寸屏幕的时候可以设置无需隐藏，小尺寸屏幕的时候自动隐藏，并出现.off-canvas-toggle用以打开导航栏，打开导航栏的状态下可以点击非导航栏区域来关闭它。以这种描述来看，它的实现概念基本上和之前说的Accordion类似，需要一个可以记载状态的元素或者变量。上次使用了<span class="code">&lt;input type="checkbox"&gt;</span>，这次换作使用一个新的伪类，<span class="code">:target</span>。</p>
+          <p><span class="code">:target</span>顾名思义就是记录当前焦点是否处于元素上的，而引发target状态只需要点击href指向对应id名的链接就好。也就是说，小尺寸屏幕的时候，让导航栏在target状态下显示，非target状态隐藏，此件的切换正如Accordion使用了一个隐藏的checkbox一样，这里也可以利用一个完全透明的a链接，只需要注意链接只在导航栏出现的时候显示，并且链接的z-index小于导航栏即可，实现并不复杂，见代码：</p>
+<pre><code class="language-scss">.off-canvas{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .off-canvas-toggle{
+    position: absolute;
+    top: $layout-spacing;
+    z-index: $zindex-0;
+    a{
+      text-decoration: none;
+      &:active{
+        outline: none;
+      }
+    }
+    @if $r2l {
+      right: $layout-spacing;
+    } @else {
+      left: $layout-spacing;
+    }
+  }
+  .off-canvas-sidebar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $zindex-2;
+    overflow-y: auto;
+    transition: transform 0.25s;
+    @if $r2l {
+      right: 0;
+      transform: translate(100%);
+    } @else {
+      left: 0;
+      transform: translate(-100%);
+    }
+  }
+  .off-canvas-content{
+    flex: auto;
+    min-width: 0;
+    height: 100%;
+    padding: $layout-spacing;
+  }
+  .off-canvas-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    display: none;
+  }
+  // 交互
+  .off-canvas-sidebar{
+    &:target,
+    &.active{
+      transform: translate(0);
+      ~ .off-canvas-overlay{
+        display: block;
+        z-index: $zindex-1;
+      }
+    }
+  }
+}</pre></code>
+          <p>代码里并没什么需要特别注意的点，不过要留意.off-canvas-overlay的出现时间和显示样式，另外，隐藏.off-canvas-sidebar是借助translate的，可以看出代码里出现了变量$r2l，其实就是right to left的缩写，这个变量默认是false，决定着导航栏默认出现在哪一侧，默认从哪一侧弹出来，也决定了导航栏隐藏的时候.off-canvas-toggle放在哪一边。</p>
+          <p>设置大尺寸屏幕显示导航栏就是将导航栏的默认状态设置为和target状态一样的便好，如下：</p>
+          <pre><code class="language-scss">// 大屏幕的时候可以设置不隐藏侧边栏
+@include forLargeScreen($off-canvas-breakpoint){
+  .off-canvas{
+    &.off-canvas-siderbar-show{
+      .off-canvas-toggle{
+        display: none;
+      }
+      .off-canvas-sidebar{
+        flex: 0 0 auto;
+        position: relative;
+        transform: none;
+        height: auto;
+        @if $r2l{
+          order: 1;
+        } @else {
+          order: -1;
+        }
+      }
+      .off-canvas-overlay{
+        display: none !important;
+      }
+    }
+  }
+}</pre></code>
+          <p>这篇文档就是一个大的.off-canvas，左边的导航栏也就是.off-canvas-sidebar，移动端的时候导航栏就会隐藏，因此作为.off-canvas的例子给出代码：</p>
+          <pre><code class="language-scss">&lt;div class="off-canvas off-canvas-siderbar-show"&gt;
+  &lt;div class="off-canvas-toggle"&gt;
+  &lt;a href="#sidebar" class="icon icon-menu"&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="off-canvas-sidebar" id="sidebar"&gt;
+  ...
+  &lt;/div&gt;
+  &lt;a href="#closeSiderbar" class="off-canvas-overlay"&gt;&lt;/a&gt;
+  &lt;div class="off-canvas-content"&gt;
+  ...
+  &lt;/div&gt;
+&lt;/div&gt;</pre></code>
+          <p></p>
+        </div>
+        <footer id="footer">
+          <p>Jingzhe</p>
+          <p><a href="#">Github</a></p>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="../vendors/prism.js"></script>
+</body>
+</html>

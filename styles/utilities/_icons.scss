@@ -1,0 +1,38 @@
+$icon-color: $purple;
+$icon-border-width: $unit-h;
+
+.icon{
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  margin-right: 0.3rem;
+  font-size: inherit;
+  text-indent: -999rem;
+  vertical-align: middle;
+  width: 1rem;
+  height: 1rem;
+  &::before,
+  &::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.icon-menu{
+  &::before{
+    width: 100%;
+    height: $icon-border-width;
+    background-color: $icon-color;
+    box-shadow: 0 -0.35em, 0 0.35rem;
+  }
+}
+
+// 一些具体组件的适配
+.accordion-header{
+  .icon{
+    margin-bottom: 0.25rem;
+  }
+}

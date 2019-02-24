@@ -1,0 +1,118 @@
+// 阅读方向时从左到右或者从右到左
+$r2l: false !default;
+// 灰阶，分为10个等级的灰度，等级划分依照RGB的习惯，数值越大越亮
+$gray-0: #000 !default;
+$gray-1: #1C1C1C !default;
+$gray-2: #393939 !default;
+$gray-3: #555555 !default;
+$gray-4: #717171 !default;
+$gray-5: #8E8E8E !default;
+$gray-6: #AAAAAA !default;
+$gray-7: #C6C6C6 !default;
+$gray-8: #E3E3E3 !default;
+$gray-9: #fff !default;
+// 几种常见的颜色，根据色轮取值
+$red:     #e24a6e !default;
+$orange:  #fe6856 !default;
+$yellow:  #fee39c !default;
+$green:   #67bd8d !default;
+$cyan:    #00a396 !default;
+$blue:    #018798 !default;
+$purple:  #8A4ED7 !default;
+$black:   #101b27 !default;
+$white:   #fefefe !default;
+
+$colors: (
+  red:    $red,
+  orange: $orange,
+  yellow: $yellow,
+  green:  $green,
+  cyan:   $cyan,
+  blue:   $blue,
+  purple: $purple,
+  black:  $black,
+  white:  $white
+);
+// 基础颜色对应的情绪感觉，根据些许的色彩心理学和自己的第一印象
+$danger: $red !default;
+$happy:  $orange !default;
+$bright: $yellow !default;
+$harmony:$green !default;
+$cool:   $cyan !default;
+$lonely: $blue !default;
+$noble:  $purple !default;
+$dark:   $black !default;
+$light:  $white !default;
+
+$theme-colors: (
+  danger: $danger,
+  happy:  $happy,
+  bright: $bright,
+  harmony:$harmony,
+  cool:   $cool,
+  lonely: $lonely,
+  noble:  $noble,
+  dark:   $dark,
+  light:  $light
+);
+
+// 标准尺寸
+$unit-o: .05rem !default;
+$unit-h: .1rem !default;
+$unit-1: .2rem !default;
+$unit-2: .4rem !default;
+$unit-3: .6rem !default;
+$unit-4: .8rem !default;
+$unit-5: 1rem !default;
+$unit-6: 1.2rem !default;
+$unit-7: 1.4rem !default;
+$unit-8: 1.6rem !default;
+$unit-9: 1.8rem !default;
+$unit-10: 2rem !default;
+$unit-12: 2.4rem !default;
+$unit-16: 3.2rem !default;
+// 自适应布局
+$size-xs: 480px !default;
+$size-sm: 600px !default;
+$size-md: 840px !default;
+$size-lg: 960px !default;
+$size-xl: 1280px !default;
+$responsive-size:(
+  xs:$size-xs,
+  sm:$size-sm,
+  md:$size-md,
+  lg:$size-lg,
+  xl:$size-xl
+);
+//z-index，保证不混乱
+$zindex-0: 1 !default;
+$zindex-1: 10 !default;
+$zindex-2: 20 !default;
+$zindex-3: 30 !default;
+$zindex-4: 40 !default;
+// 最小宽度，避免元素太窄
+$control-width-xs: 180px !default;
+$control-width-sm: 320px !default;
+$control-width-md: 640px !default;
+$control-width-lg: 960px !default;
+$control-width-xl: 1280px !default;
+//响应式侧边栏
+$off-canvas-breakpoint: $size-lg;
+$layout-spacing: $unit-2;
+$layout-spacing-sm: $unit-1;
+$layout-spacing-lg: $unit-3;
+// html默认
+$html-font-size: 18px;
+$html-font-color: #2f2732;
+$html-line-height: 1.5;
+$bg-color: #fefefe;
+$font-size-sm: 0.7rem;
+$font-size-lg: 1.2rem;
+// 默认其它
+// 链接
+$link-color: $blue;
+$link-color-dark: $cyan;
+$link-color-visited: $purple;
+
+$border-width: $unit-o;
+$border-radius: $unit-1;

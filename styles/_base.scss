@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after{
+  box-sizing: inherit;
+}
+html{
+  box-sizing: border-box;
+  font-size: $html-font-size;
+  color: $html-font-color;
+  line-height: $html-line-height;
+  font-family: Consolas;
+}
+@for $i from 1 through 6{
+  h#{$i}{
+    font-weight: 500;
+    font-size: 1.8 - 0.2 * ($i - 1) + rem;
+    line-height: 1.2;
+    margin-top: $unit-2;
+    margin-bottom: $unit-4;
+  }
+}
+p{
+  margin: $unit-2 0;
+}
+img{
+  max-width: 100%;
+}
+[hidden]{
+  display: none !important;
+}
+a{
+  color: $link-color;
+  outline: none;
+  text-decoration: none;
+  &:focus {
+    box-shadow: 0 0 0 .1rem rgba($blue, .2);
+  }
+  &:visited {
+    color: $link-color-visited;
+  }
+  &:focus,
+  &:hover,
+  &:active,
+  &.active {
+    color: $link-color-dark;
+    text-decoration: underline;
+  }
+}
+
+ul{
+  margin: $unit-1;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Template</title>
+  <link rel="stylesheet" href="../vendors/prism.css">
+  <link rel="stylesheet" href="../styles/loli-1.1.2.css">
+  <link rel="stylesheet" href="../styles/docs.css">
+</head>
+<body>
+  <!-- 内容于此 -->
+  <div class="docs-container">
+    <div class="off-canvas off-canvas-siderbar-show">
+      <div class="off-canvas-toggle">
+        <a href="#sidebar" class="icon icon-menu"></a>
+      </div>
+      <div class="off-canvas-sidebar" id="sidebar">
+        <div class="siderbar-brand">
+          <a href="HOME.html">Loli<span class="text-red">.</span>css</a>
+        </div>
+        <div class="siderbar-menu">
+          <div class="accordion">
+            <input type="checkbox" id="menu-layout" checked hidden>
+            <label for="menu-layout" class="accordion-header">
+              Layout
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./grid.html">Grid</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-utilities" checked hidden>
+            <label for="menu-utilities" class="accordion-header">
+              Utilities
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./color.html">Color</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./text.html">Text</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./position.html">Position</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-component" checked hidden>
+            <label for="menu-component" class="accordion-header">
+              Component
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./accordion.html">Accordion</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./bars.html">Bars</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./card.html">Card</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./hideLine.html">hideLine</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./off-canvas.html">Off-canvas</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./tooltip.html">Tooltip</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#closeSiderbar" class="off-canvas-overlay"></a>
+      <div class="off-canvas-content">
+        <div class="content-container">
+          <h2 id="s-title" class="hideLine" hide-data="这就是HideLine">
+            HideLine
+          </h2>
+          <p>HideLine主要是隐藏一些不那么重要的话并且在标题或者小元素前加一条竖线以作标志用的，就像是本章的大标题一般，hover的时候隐藏的内容会覆盖标题。</p>
+          <p class="hideLine hideLine-cool no-hide">隐藏的内容写在属性hide-data里，:before中通过函数<span class="code">attr()</span>来获取它的值，如果只需要在顶头加一条横线做标志但并不需要隐藏什么值，可以额外添加一个.no-hide类。实现起来就只是:hover的宽度变化和一个transition效果，见代码：</p>
+          <pre><code class="language-scss">.hideLine{
+  position: relative;
+  padding-left: 0.5rem;
+  &::before{
+    content: attr(hide-data);
+    padding-left: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 0.3rem;
+    height: 100%;
+    transition: 0.2s ease-in-out;
+  }
+  &:hover::before{
+    width: 100%;
+  }
+  &.no-hide{
+    &:hover::before{
+      width: 0.3rem;
+      transition: none;
+    }
+  }</pre></code>
+        </div>
+        <footer id="footer">
+          <p>Jingzhe</p>
+          <p><a href="#">Github</a></p>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="../vendors/prism.js"></script>
+</body>
+</html>

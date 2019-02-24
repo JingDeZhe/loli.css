@@ -1,0 +1,57 @@
+/*Menu:菜单栏*/
+.menu{
+  @include shadow-variant(0.05rem);
+  background-color: $bg-color;
+  border-radius: $border-radius;
+  z-index: $zindex-3;
+  padding: $unit-2;
+  margin-bottom: $unit-3;
+  &.menu-nav{
+    padding: $unit-1;
+    background: transparent;
+    box-shadow: none;
+  }
+  .menu-item{
+    margin-top: 0;
+    padding: 0 $unit-2 0 $unit-1;
+    position: relative;
+    text-decoration: none;
+    list-style: none;
+    & > a{
+      border-radius: $border-radius;
+      display: block;
+      margin: 0 (-$unit-2);
+      padding: $unit-1 $unit-2;
+      text-decoration: none;
+      &:focus,
+      &:hover{
+        background-color: rgba($orange, 0.1);
+        color: $purple;
+      }
+      &:active,
+      &.active{
+        background-color: rgba($orange, 0.1);
+        color: darken($purple,0.2);
+      }
+    }
+    .form-checkbox,
+    .form-radio,
+    .form-switch {
+      margin: $unit-h 0;
+    }
+    & + .menu-item {
+      margin-top: $unit-1;
+    }
+  }
+  .menu-badge{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    .label{
+      margin-right: $unit-2;
+    }
+  }
+}

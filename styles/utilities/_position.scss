@@ -1,0 +1,61 @@
+/*常见的位置与margin等*/
+.fl-left{
+  float: left;
+}
+.fl-right{
+  float: right;
+}
+.p-relative{
+  position: relative;
+}
+.p-absolute{
+  position: absolute;
+}
+.p-fixed{
+  position: fixed;
+}
+.p-sticky{
+  position: sticky;
+}
+.p-centered{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.d-block{
+  display: block;
+}
+.d-inline{
+  display: inline;
+}
+.d-inline-block{
+  display: inline-block;
+}
+.d-flex{
+  display: flex;
+}
+
+.flex-end{
+  display: flex;
+  justify-content: flex-end;
+}
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+}
+.flex-around{
+  display: flex;
+  justify-content: space-around;
+}
+.flex-centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@include margin-variant(0, 0);
+@include margin-variant(1, $unit-1);
+@include margin-variant(2, $unit-2);
+@include padding-variant(0, 0);
+@include padding-variant(1, $unit-1);
+@include padding-variant(2, $unit-2);

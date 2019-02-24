@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bars</title>
+  <link rel="stylesheet" href="../vendors/prism.css">
+  <link rel="stylesheet" href="../styles/loli-1.1.2.css">
+  <link rel="stylesheet" href="../styles/docs.css">
+</head>
+<body>
+  <!-- 内容于此 -->
+  <div class="docs-container">
+    <div class="off-canvas off-canvas-siderbar-show">
+      <div class="off-canvas-toggle">
+        <a href="#sidebar" class="icon icon-menu"></a>
+      </div>
+      <div class="off-canvas-sidebar" id="sidebar">
+        <div class="siderbar-brand">
+          <a href="HOME.html">Loli<span class="text-red">.</span>css</a>
+        </div>
+        <div class="siderbar-menu">
+          <div class="accordion">
+            <input type="checkbox" id="menu-layout" checked hidden>
+            <label for="menu-layout" class="accordion-header">
+              Layout
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./grid.html">Grid</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-utilities" checked hidden>
+            <label for="menu-utilities" class="accordion-header">
+              Utilities
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./color.html">Color</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./text.html">Text</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./position.html">Position</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-component" checked hidden>
+            <label for="menu-component" class="accordion-header">
+              Component
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./accordion.html">Accordion</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./bars.html">Bars</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./card.html">Card</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./hideLine.html">hideLine</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./off-canvas.html">Off-canvas</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./tooltip.html">Tooltip</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#closeSiderbar" class="off-canvas-overlay"></a>
+      <div class="off-canvas-content">
+        <div class="content-container">
+          <h2 id="s-title">Bars</h2>
+          <p>Bars指的是横向条状图和滑动条状图，一般用以显示占比或者流程等，比如说用条状图显示画画的构成：</p>
+          <div class="bar">
+            <div class="bar-item tooltip color-theme-cyan" data-tooltip="天赋很重要"
+             style="width:50%">天赋</div>
+            <div class="bar-item tooltip color-theme-purple" data-tooltip="努力是基础"
+             style="width:30%">努力</div>
+            <div class="bar-item tooltip color-theme-red" data-tooltip="灵感成就作品"
+             style="width:20%">灵感</div>
+          </div>
+          <p>一般来说bar会和tooltip搭配使用，这样既直观又不会很含义模糊。如上边的例子所见，实现bar的基本思路也可以推测到，这里就用flex来实现，当然float和position也都可以。</p>
+          <p>似乎问题一下子就解决了，实际上问题的确是解决了，即使什么都还没怎么说。主要是既然决定用flex，那问题就相当明显了，直接看代码：</p>
+          <pre><code class="language-scss">.bar{
+  display: flex;
+  height: $unit-4;
+  border-radius: $border-radius;
+
+  .bar-item{
+    display: block;
+    line-height: $unit-4;
+    width: 0;
+    height: 100%;
+    flex-shrink: 0;
+    &:first-child{
+      @include border-radius-left($border-radius);
+    }
+    &:last-child{
+      flex-shrink: 1;
+      @include border-radius-right($border-radius);
+    }
+  }
+}</pre></code>
+          <p>抛开高度字体颜色设置，里边的关键就在于将.bar设置为了flex，将内部元素的flex-shrink设置为0，首尾.bar-item设置了左右圆角，另外还有一点需要注意到，最后一个.bar-item的flex-shrink设置了flex-shrink为1，这是为了防止它超出了界线条，正如从实际来说，前边已经占了80%，你总不能还硬塞80%的内容进去的。最后，.bar-item的宽度是用内联样式指定的。</p>
+          <div class="bar bar-sm">
+            <div class="bar-item tooltip color-theme-cyan" data-tooltip="小白" style="width:50%"></div>
+            <div class="bar-item tooltip color-theme-purple" data-tooltip="大白" style="width:30%"></div>
+            <div class="bar-item tooltip color-theme-red" data-tooltip="老白" style="width:20%"></div>
+          </div>
+          <p>既然已经弄好了条状图，那滑动条也比较明显的，先看一下滑动条的例子：</p>
+          <section class="shadow p-4 round-lg">
+            <h4>画画的历程</h4>
+            <div class="bar bar-slider">
+              <div class="bar-item" style="width:15%;">
+                <button class="btn bar-slider-btn tooltip" data-tooltip="草稿需要完成"></button>
+              </div>
+            </div>
+            <div class="bar bar-slider">
+              <div class="bar-item" style="width:20%;">
+                <button class="btn bg-cyan bar-slider-btn tooltip" data-tooltip="草稿才完成！"></button>
+              </div>
+              <div class="bar-item bg-cyan" style="width:55%;">
+                <button class="btn bg-cyan bar-slider-btn tooltip" data-tooltip="一定要涂好整体色块！"></button>
+              </div>
+            </div>
+            <div class="bar bar-slider">
+              <div class="bar-item" style="width:50%;">
+                <button class="btn bg-red bar-slider-btn tooltip" data-tooltip="还好涂色比较快！"></button>
+              </div>
+              <div class="bar-item bg-red" style="width:100%;">
+                <button class="btn bg-red bar-slider-btn tooltip tooltip-left" data-tooltip="OK"></button>
+              </div>
+            </div>
+          </section>
+          <p>如图中所见，其实滑动条开始看上去没有内容的地方也是有内容的，不过第一个.bar-item的背景色与滑动条的背景色相同所以看上去就好像没有一样，这样便可以知道这里边的.bar-item是采用绝对定位的，都从最左边开始，然后宽度与普通条状图一样，采取内联样式指定。</p>
+          <pre><code class="language-scss">.bar-slider{
+  position: relative;
+  height: $unit-1;
+  z-index: $zindex-0;
+  .bar-item{
+    position: absolute;
+    left: 0;
+    &:not(:last-child):first-child{
+      background-color: $gray-8;
+      z-index: $zindex-1;
+    }
+  }
+  .bar-slider-btn{
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    right: 0;
+    width: $unit-3;
+    height: $unit-3;
+    transform: translate(50%, -50%);
+    }
+  }
+}</pre></code>
+          <p>因为前边的.bar-item需要遮住后边的，所以前边的z-index要大写。另外，<span class="code">:not(:last-child):first-child</span>保证了如果.bar-slider中只有一个.bar-item，那这个item的颜色会正常显示而不会和条状图背景色相同导致图里什么也看不见。</p>
+          <p class="example"></p>
+          <p>以最开始画画的构成来说明如何使用bar：</p>
+          <pre><code class="language-scss">&lt;div class="bar"&gt;
+  &lt;div class="bar-item tooltip color-theme-cyan" data-tooltip="天赋很重要"
+    style="width:50%"&gt;天赋&lt;/div&gt;
+  &lt;div class="bar-item tooltip color-theme-purple" data-tooltip="努力是基础"
+    style="width:30%"&gt;努力&lt;/div&gt;
+  &lt;div class="bar-item tooltip color-theme-red" data-tooltip="灵感成就作品"
+    style="width:20%"&gt;灵感&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+          <div class="bar">
+            <div class="bar-item tooltip color-theme-cyan" data-tooltip="天赋很重要"
+              style="width:50%">天赋</div>
+            <div class="bar-item tooltip color-theme-purple" data-tooltip="努力是基础"
+              style="width:30%">努力</div>
+            <div class="bar-item tooltip color-theme-red" data-tooltip="灵感成就作品"
+              style="width:20%">灵感</div>
+          </div>
+          <p></p>
+        </div>
+        <footer id="footer">
+          <p>Jingzhe</p>
+          <p><a href="#">Github</a></p>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="../vendors/prism.js"></script>
+</body>
+</html>

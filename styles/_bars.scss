@@ -1,0 +1,64 @@
+.bar{
+  display: flex;
+  height: $unit-4;
+  background-color: $gray-8;
+  border-radius: $border-radius;
+  &.bar-sm{
+    height: $unit-1;
+  }
+
+  .bar-item{
+    display: block;
+    line-height: $unit-4;
+    font-size: 0.7 * $unit-4;
+    background-color: $purple;
+    color: $white;
+    text-align: center;
+    width: 0;
+    height: 100%;
+    flex-shrink: 0;
+    &:first-child{
+      @include border-radius-left($border-radius);
+    }
+    &:last-child{
+      flex-shrink: 1;
+      @include border-radius-right($border-radius);
+    }
+  }
+}
+
+.bar-slider{
+  position: relative;
+  height: $unit-1;
+  margin: $unit-3 0;
+  background-color: $gray-8;
+  z-index: $zindex-0;
+  .bar-item{
+    position: absolute;
+    left: 0;
+    padding: 0;
+    &:not(:last-child):first-child{
+      background-color: $gray-8;
+      z-index: $zindex-1;
+    }
+  }
+  .bar-slider-btn{
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    right: 0;
+    width: $unit-3;
+    height: $unit-3;
+    background-color: $purple;
+    transform: translate(50%, -50%);
+    &:focus,
+    &:hover{
+      box-shadow: 0 0 0 0.1rem rgba($purple,0.3);
+    }
+    &:active{
+      box-shadow: 0 0 0 0.1rem rgba($purple,0.8);
+    }
+  }
+}
+

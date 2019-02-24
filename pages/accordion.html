@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Accordion</title>
+  <link rel="stylesheet" href="../vendors/prism.css">
+  <link rel="stylesheet" href="../styles/loli-1.1.2.css">
+  <link rel="stylesheet" href="../styles/docs.css">
+</head>
+<body>
+  <!-- 内容于此 -->
+  <div class="docs-container">
+    <div class="off-canvas off-canvas-siderbar-show">
+      <div class="off-canvas-toggle">
+        <a href="#sidebar" class="icon icon-menu"></a>
+      </div>
+      <div class="off-canvas-sidebar" id="sidebar">
+        <div class="siderbar-brand">
+          <a href="HOME.html">Loli<span class="text-red">.</span>css</a>
+        </div>
+        <div class="siderbar-menu">
+          <div class="accordion">
+            <input type="checkbox" id="menu-layout" checked hidden>
+            <label for="menu-layout" class="accordion-header">
+              Layout
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./grid.html">Grid</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-utilities" checked hidden>
+            <label for="menu-utilities" class="accordion-header">
+              Utilities
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./color.html">Color</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./text.html">Text</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./position.html">Position</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-component" checked hidden>
+            <label for="menu-component" class="accordion-header">
+              Component
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./accordion.html">Accordion</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./bars.html">Bars</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./card.html">Card</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./hideLine.html">hideLine</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./off-canvas.html">Off-canvas</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./tooltip.html">Tooltip</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#closeSiderbar" class="off-canvas-overlay"></a>
+      <div class="off-canvas-content">
+        <div class="content-container">
+          <h2 id="s-title">Accordion</h2>
+          <p>Accordion即可折叠区域，和<span class="code">&lt;details&gt;</span>标签类似，不过更灵活些。折叠区域往常多用JavaScript实现，这里就纯粹用CSS，就想法上也是异途同归。</p>
+          <p>折叠区域重在折叠两字，既然要折叠，必然要有能记录下当前折叠状态的元素存在，思来想去<span class="code">&lt;input type="checkbox"&gt;</span>恰好就是这样的元素，正好两个值，并且还可以互相切换，可以符合要求。如此说来，既然有了input，也能很自然地想到<span class="code">&lt;label&gt;</span>了，label可以根据<span class="code">for</span>来指向特定的input元素从而无需亲自点击它就可以修改它的状态，之后根据其状态<span class="code">checked</span>来标志需要显示折叠区域，否则隐藏折叠区域。</p>
+          <p>实现的方法也不难，先设置.according-body的max-height为0，然后在checkbox为checked的状态下设置其max-height为一个足够大的值就好，如下：</p>
+          <pre><code class="language-scss">.accordion-body{
+  padding-left: $unit-2;
+  margin-bottom: $layout-spacing;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s;
+}
+
+input:checked ~,
+  &[open]{
+    & .accordion-body{
+      max-height: 100rem;
+    }
+  }</pre></code>
+          <p>注意到这里指定的是max-height而非height，因为我们实际上并不知道折叠区域的高度，既然不知道高度，为何还需要特别指定一个max-height便是一个小技巧了。仔细再看一下.according-body的transition属性，它是可以根据max-height来实现过渡效果的，这样便实现了简单的动画，虽然看上去折叠的内容不能高于100rem是一个bug，但实际上很少会遇到需要折叠这么一大块区域的情况，因此并非什么大问题。</p>
+          <p>Accordion的大体结构这样便可以了，另外就是一些辅助性的效果，比方说折叠动作的时候显示区域旁边的小图标可以转一下之类的，利用transform便可以很轻易做到：</p>
+          <pre><code class="language-scss">input:checked ~,
+&[open]{
+  & .accordion-header{
+    .icon{
+      transform: rotate(90deg)
+    }
+  }
+}
+
+.accordion-header{
+  cursor: pointer;
+  display: block;
+  padding: $unit-1 $unit-2;
+  .icon{
+    transition: transform 0.25s;
+  }
+}</pre></code>
+          <p>如此一来Accordion也就完成了，不过考虑也可以在details标签中添加该类，所以需要将summary标签自带的小标志取消掉，如下：</p>
+          <pre><code class="language-scss">summary.accordion-header{
+  &::-webkit-details-marker{
+    display: none !important;
+  }
+}</pre></code>
+          <p>Accordion的使用便只需要添加相应的类和input就好，如下：</p>
+          <pre><code class="language-html">&lt;div class="accordion"&gt;
+&lt;input type="checkbox" id="ac-exp0" hidden&gt;
+&lt;label for="ac-exp0" class="accordion-header"&gt;
+  &lt;div class="icon icon-menu"&gt;&lt;/div&gt;古都&lt;/label&gt;
+&lt;div class="accordion-body"&gt;
+  &lt;p&gt;
+    ...
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+          <div class="accordion">
+            <input type="checkbox" id="ac-exp0" hidden>
+            <label for="ac-exp0" class="accordion-header">
+              <div class="icon icon-menu"></div>古都</label>
+            <div class="accordion-body">
+              <p>
+                雷声越来越凄厉。雷电交加，不时发出天崩地裂似的巨响。<br>这巨响仿佛冲着这两个姑娘的头顶压下来。<br>雨点敲打在杉树末梢上，沙沙作响。每次闪电，一道亮光直闪到地上，把两个姑娘周围的杉树树干都照亮了。转眼间，美丽笔直的树干也变得令人望而生畏。不容思索，马上又是一阵雷鸣
+              </p>
+            </div>
+          </div>
+        </div>
+        <footer id="footer">
+          <p>Jingzhe</p>
+          <p><a href="#">Github</a></p>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="../vendors/prism.js"></script>
+</body>
+</html>

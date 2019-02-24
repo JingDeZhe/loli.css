@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Card</title>
+  <link rel="stylesheet" href="../vendors/prism.css">
+  <link rel="stylesheet" href="../styles/loli-1.1.2.css">
+  <link rel="stylesheet" href="../styles/docs.css">
+</head>
+<body>
+  <!-- 内容于此 -->
+  <div class="docs-container">
+    <div class="off-canvas off-canvas-siderbar-show">
+      <div class="off-canvas-toggle">
+        <a href="#sidebar" class="icon icon-menu"></a>
+      </div>
+      <div class="off-canvas-sidebar" id="sidebar">
+        <div class="siderbar-brand">
+          <a href="HOME.html">Loli<span class="text-red">.</span>css</a>
+        </div>
+        <div class="siderbar-menu">
+          <div class="accordion">
+            <input type="checkbox" id="menu-layout" checked hidden>
+            <label for="menu-layout" class="accordion-header">
+              Layout
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./grid.html">Grid</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-utilities" checked hidden>
+            <label for="menu-utilities" class="accordion-header">
+              Utilities
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./color.html">Color</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./text.html">Text</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./position.html">Position</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion">
+            <input type="checkbox" id="menu-component" checked hidden>
+            <label for="menu-component" class="accordion-header">
+              Component
+            </label>
+            <div class="accordion-body">
+              <ul class="menu menu-nav">
+                <li class="menu-item">
+                  <a href="./accordion.html">Accordion</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./bars.html">Bars</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./card.html">Card</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./hideLine.html">hideLine</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./off-canvas.html">Off-canvas</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./tooltip.html">Tooltip</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./待续.html">...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#closeSiderbar" class="off-canvas-overlay"></a>
+      <div class="off-canvas-content">
+        <div class="content-container">
+          <h2 id="s-title">Card</h2>
+          <p>Card多用来展示图片标签等，同样先看例子，然后便可以看出它可以如何实现。</p>
+          <div class="row">
+            <div class="column col-4 col-xs-12">
+              <div class="card">
+                <div class="card-header">猫</div>
+                <img class="card-img" src="../img/wb/cat.jpg" alt="">
+                <div class="card-body">
+                </div>
+                <div class="card-footer">
+                  <h3>猫</h3>
+                  <p>幽微不惊，月黑无色。</p>
+                </div>
+              </div>
+            </div>
+            <div class="column col-4 col-xs-12">
+              <div class="card">
+                <div class="card-header">鹿</div>
+                <img class="card-img" src="../img/wb/deer.jpg" alt="">
+                <div class="card-body">
+                </div>
+                <div class="card-footer">
+                  <h3>鹿</h3>
+                  <p>似在沉思，秘而不发。</p>
+                </div>
+              </div>
+            </div>
+            <div class="column col-4 col-xs-12">
+              <!-- <div class="card">
+                <div class="card-footer">
+                  <h3>松鼠</h3>
+                  <p>山林之内，不见其踪。</p>
+                </div>
+                <div class="card-body">
+                </div>
+                <img class="card-img" src="../img/wb/squirrel.jpg" alt="">
+              </div> -->
+              <div class="fake-card">
+                <div class="fake-card-header">松鼠</div>
+                <img class="fake-card-img" src="../img/wb/squirrel.jpg" alt="">
+                <div class="fake-card-body"></div>
+                <div class="fake-card-footer">
+                  <h3>松鼠</h3>
+                  <p>山林之内，不见其踪。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>初看来，并没什么特别之处，貌似什么都可以做到，就算只是单纯地放些文字与图片可以达到这样的效果。仔细一思考，的确是如此的，实际上上面三个.card元素中最右边是假的Card，它就只是元素的顺序排列而已，并没什么高深的样式，这么来说，Card是不是直接就不需要专门写样式了？</p>
+          <p>如果只需要上面的效果当然是不必要专门写样式了，但是如果换一种样式的话，就能看出来真的.card与假的.card的区别了，我们尝试着让同一行的.card高度一致，注意到.card多数时候是放在.column里的，因为大屏幕中.card的排列与小屏幕中肯定不能相同，不然小屏幕就太挤了，而同行的.column的高度是一致的，所以说想让同行的.card高度一致，只需要将.card的height设为100%就可以，这样一来呈现的便是下边的结果：</p>
+          <div class="row">
+            <div class="column col-4 col-xs-12">
+              <div class="card" style="height:100%">
+                <div class="card-header">猫</div>
+                <img class="card-img" src="../img/wb/cat.jpg" alt="">
+                <div class="card-body">
+                </div>
+                <div class="card-footer">
+                  <h3>猫</h3>
+                  <p>幽微不惊，月黑无色。</p>
+                </div>
+              </div>
+            </div>
+            <div class="column col-4 col-xs-12">
+              <div class="card" style="height:100%">
+                <div class="card-header">鹿</div>
+                <img class="card-img" src="../img/wb/deer.jpg" alt="">
+                <div class="card-body">
+                </div>
+                <div class="card-footer">
+                  <h3>鹿</h3>
+                  <p>似在沉思，秘而不发。</p>
+                </div>
+              </div>
+            </div>
+            <div class="column col-4 col-xs-12">
+              <!-- <div class="card">
+                <div class="card-footer">
+                  <h3>松鼠</h3>
+                  <p>山林之内，不见其踪。</p>
+                </div>
+                <div class="card-body">
+                </div>
+                <img class="card-img" src="../img/wb/squirrel.jpg" alt="">
+              </div> -->
+              <div class="fake-card" style="height:100%">
+                <div class="fake-card-header">松鼠</div>
+                <img class="fake-card-img" src="../img/wb/squirrel.jpg" alt="">
+                <div class="fake-card-body"></div>
+                <div class="fake-card-footer">
+                  <h3>松鼠</h3>
+                  <p>山林之内，不见其踪。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>很明显可以看出来假.card的区别，它的底部是无法平齐的，而且按照正常的方式它是没法利用传统CSS属性弄成平齐的，所以说假的.card虽然可以，但并不好用，至少页脚块位于最下方它便是无法达到的，这点是常有的样式需求。</p>
+          <p>说了这么些，其实实现方法也很明了了，便是flex布局，而且并没有任何的技术性可言，直接贴代码：</p>
+          <pre><code class="language-scss">.card{
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.2rem 0.3rem rgba($dark,0.4);
+  border-radius: $border-radius;
+  .card-header,
+  .card-body,
+  .card-footer{
+    &:last-child{
+      margin-top: auto;
+    }
+  }
+  .card-img{
+    width: 100%;
+    &:first-child{
+      padding-top: 0;
+      @include border-radius-top($border-radius);
+    }
+    &:last-child{
+      padding-bottom: 0;
+      @include border-radius-bottom($border-radius);
+    }
+  }
+}</pre></code>
+          <p>
+            如上，将最后一个元素的margin-top设置为auto便可以让它顶到最底端。细节方面，如果.card-img出现在顶部或者底部，就需要设置上下的圆角以适应.card整体的圆角。至于说假.card的样式就不需要给出了，毕竟它实际上没有特别的样式。
+          </p>
+          <p class="example"></p>
+          <div class="row">
+            <div class="column col-4 col-xs-12">
+              <div class="card" style="height:100%">
+                <div class="card-header">猫</div>
+                <img class="card-img" src="../img/wb/cat.jpg" alt="">
+                <div class="card-footer">
+                  <h3>猫</h3>
+                  <p>幽微不惊，月黑无色。</p>
+                </div>
+              </div>
+            </div>
+            <div class="column col-4 col-xs-12">
+              <div class="card" style="height:100%">
+                <img class="card-img" src="../img/wb/deer.jpg" alt="">
+                <div class="card-footer">
+                  <h3>鹿</h3>
+                  <p>似在沉思，秘而不发。</p>
+                </div>
+              </div>
+            </div>
+            <div class="column col-4 col-xs-12">
+              <div class="card" style="height:100%">
+                <div class="card-footer">
+                  <h3>松鼠</h3>
+                  <p>山林之内，不见其踪。</p>
+                </div>
+                <div class="card-body">
+                  <p>鼠而竄者，攀而棲者，不知可謂與否，見之瞬失，聞之空音，尋其巢，于松之間，于鳥之徬，實乃享之一日，喜現多時。</p>
+                </div>
+                <img class="card-img" src="../img/wb/squirrel.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer id="footer">
+          <p>Jingzhe</p>
+          <p><a href="#">Github</a></p>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="../vendors/prism.js"></script>
+</body>
+</html>
